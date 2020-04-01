@@ -1,23 +1,33 @@
 import * as React from "react";
-
-export interface MyProps {
-  compiler: string;
-  framework: string;
-}
+import { LoginModules } from "../components";
+export interface MyProps {}
 
 // 'HelloProps' describes the shape of props.
 // State is never set so we use the '{}' type.
-export class Login extends React.Component<MyProps, {}> {
-  getDeriveDStateFromProps(){
-     alert('getDeriveDStateFromProps')
+export class Login extends React.Component<MyProps, any> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      framework: "react"
+    };
   }
 
   render() {
+    const  framework  = this.state.framework;
     return (
-      <h1>
-        Hello from {this.props.compiler} and {this.props.framework}!
-        <p>my name is Login</p>
-      </h1>
+      <div>
+        <span>my name is Login container</span>
+        <button
+          onClick={() => {
+            this.setState({
+              framework: framework === "react" ? "typescript" : "react"
+            });
+          }}
+        >
+          click change framework ({framework}){" "}
+        </button>
+        <LoginModules compiler={"v8"} framework={framework} />
+      </div>
     );
   }
 }

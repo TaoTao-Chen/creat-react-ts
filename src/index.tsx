@@ -20,7 +20,51 @@ const Index = () => {
 };
 
 
+
+
 class Container extends React.Component<any, any> {
+  constructor(props:any){
+    super(props)
+    this.state={
+      statesParams:2
+    }
+  }
+
+
+  //不建议使用的两个方法
+  static getDerivedStateFromProps(props:any,state:any){
+    console.log('getDerivedStateFromProps');
+    console.log(props,state);
+    return { 
+      statesParams:2,
+      statesParams2:3,
+    }
+    //此处返回的对象会比setstate优先更新，在更新setstate里的值
+  }
+
+  getSnapshotBeforeUpdate(prevProps:any,prevStates:any){
+    return{
+      snapshot:3
+    }
+
+  }
+
+  //建议使用的两个方法
+  componentDidMount() {
+    //加载基础的服务
+    console.log('componentDidMount');
+    this.setState({
+      statesParams2:1
+    })
+  }
+
+  componentDidUpdate(prevProps:any,prevStates:any,snapshot:any) {
+    //加载props变化的服务
+    // 典型用法（不要忘记比较 props）：
+    console.log('componentDidUpdate');
+    console.log(prevProps,prevStates,snapshot);
+  }
+
   render() {
     return (
       <Router>
@@ -34,4 +78,7 @@ class Container extends React.Component<any, any> {
   }
 }
 
-ReactDOM.render(<Container />, document.getElementById("example"));
+
+
+
+ReactDOM.render(<Container propsParams={1}/>, document.getElementById("example"));
