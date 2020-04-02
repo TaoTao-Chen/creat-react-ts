@@ -19,6 +19,9 @@ export class LoginModules extends React.Component<MyProps, {}> {
     console.log("componentDidUpdate");
     console.log(prevProps, prevStates, snapshot);
     console.log(this.props, this.state);
+
+    console.log(this.props, this.state);
+
   }
   render() {
     return (

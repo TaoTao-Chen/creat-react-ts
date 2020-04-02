@@ -26,7 +26,8 @@ class Container extends React.Component<any, any> {
   constructor(props:any){
     super(props)
     this.state={
-      statesParams:2
+      statesParams:2,
+      a:1
     }
   }
 
