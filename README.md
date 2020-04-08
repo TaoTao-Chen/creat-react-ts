@@ -11,5 +11,7 @@
 npm start
 ``
 
-3.打开index.html
+3.修改index.html的js版本，打开html预览效果
+
+4.自建测试和生成环境，发布等。
 
