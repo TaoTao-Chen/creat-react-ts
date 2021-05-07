@@ -26,7 +26,7 @@ module.exports = {
     // 通常用来分离 1. 多页面（据经验：每个 HTML 文档只使用一个入口起点）2. 第三方库和app
   },
   output: {
-    filename: "[name].[chunkhash].bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, 'dist'),
   },
 
